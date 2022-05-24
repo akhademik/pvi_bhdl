@@ -1,5 +1,5 @@
 //! BẢO HIỂM DU LỊCH
-const form = document.querySelector("form");
+const form = document.querySelector("#form");
 const result = document.querySelector(".result");
 const sum = document.querySelector(".sum");
 const days = document.querySelector(".days");
