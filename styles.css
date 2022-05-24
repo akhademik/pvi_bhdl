@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&display=swap");
+* {
+	font-family: "Roboto", sans-serif;
+}
+
+body {
+	display: grid;
+	place-items: center;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: rgb(90, 89, 89);
+	color: #fff;
+	min-height: 90vh;
+}
+
+.wrapper {
+	padding: 1rem;
+	margin: 0 auto;
+	border-radius: 1.2rem;
+	border: 4px solid #12bfea;
+	background-color: #160b2b;
+	max-width: 400px;
+	text-align: center;
+}
+
+#form {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 0 0.8rem;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+#form label {
+	text-align: left;
+	font-size: 1rem;
+	padding-top: 0.8rem;
+}
+#form input {
+	background-color: #373a4d;
+	border: 1px solid rgb(108, 186, 204);
+	margin-top: 0.3rem;
+	padding: 0.5rem;
+	height: 37px;
+	color: white;
+	font-size: 1.5rem;
+	border-radius: 0.5rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+button {
+	margin-top: 2rem;
+	padding: 0.5rem 1rem;
+	width: -webkit-max-content;
+	width: -moz-max-content;
+	width: max-content;
+	-ms-flex-item-align: center;
+	align-self: center;
+	font-size: 1.4rem;
+	border-radius: 1.2rem;
+	border: 2px solid #12bfea;
+	background: linear-gradient(
+		129.2338804468deg,
+		rgb(243, 72, 104) 44.8942916723%,
+		rgb(242, 71, 104) 44.8942916723%,
+		rgb(158, 0, 236) 79.2512068181%
+	);
+	color: rgb(255, 255, 255);
+}
+button:hover,
+button:focus {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.result {
+	width: 80%;
+	min-height: 100px;
+	background: linear-gradient(
+		129.2338804468deg,
+		rgb(243, 72, 104) 44.8942916723%,
+		rgb(242, 71, 104) 44.8942916723%,
+		rgb(158, 0, 236) 79.2512068181%
+	);
+	margin: 1.5rem auto;
+	border-radius: 1rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	font-size: 2.5rem;
+	color: rgb(251, 251, 251);
+	font-weight: bold;
+	border: 2px solid #12bfea;
+}
