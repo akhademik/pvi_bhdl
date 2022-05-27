@@ -12,7 +12,7 @@ sum.addEventListener("focus", function () {
 
 sum.addEventListener("focusout", function () {
 	const newNum = parseInt(sum.value);
-	const formatNum = newNum.toLocaleString();
+	const formatNum = newNum.toLocaleString("en-US");
 	sum.type = "text";
 	formatNo(sum, formatNum);
 });
@@ -79,15 +79,15 @@ Tren 90: 0.005%
 		((0.005 * days90 * sum) / 100) * rateDis;
 
 	if (days > 90) {
-		return lastRate.toLocaleString();
+		return lastRate.toLocaleString("en-US");
 	} else if (60 <= days && days <= 90) {
-		return d90.toLocaleString();
+		return d90.toLocaleString("en-US");
 	} else if (21 <= days && days <= 60) {
-		return d60.toLocaleString();
+		return d60.toLocaleString("en-US");
 	} else if (11 <= days && days <= 20) {
-		return d20.toLocaleString();
+		return d20.toLocaleString("en-US");
 	} else if (1 <= days && days <= 10) {
-		return d10.toLocaleString();
+		return d10.toLocaleString("en-US");
 	}
 }
 
