@@ -1,6 +1,6 @@
 //! BẢO HIỂM DU LỊCH
 const form = document.querySelector("#form");
-const result = document.querySelector(".result");
+const result = document.querySelector(".price");
 const sum = document.querySelector(".sum");
 const days = document.querySelector(".days");
 const discount = document.querySelector(".discount");
@@ -12,7 +12,7 @@ sum.addEventListener("focus", function () {
 
 sum.addEventListener("focusout", function () {
 	const newNum = parseInt(sum.value);
-	const formatNum = newNum.toLocaleString("en-US");
+	const formatNum = newNum.toLocaleString();
 	sum.type = "text";
 	formatNo(sum, formatNum);
 });
@@ -32,6 +32,7 @@ form.addEventListener("submit", e => {
 	e.preventDefault();
 	const newSum = sum.value.replaceAll(",", "");
 	const newDays = days.value;
+	if (newDays === "0") return error();
 	const newDiscount = discount.value.replaceAll("%", "");
 	const result = tinhphi(newDays, newSum, newDiscount);
 	if (newSum == "" || newDays == "") {
@@ -79,21 +80,31 @@ Tren 90: 0.005%
 		((0.005 * days90 * sum) / 100) * rateDis;
 
 	if (days > 90) {
-		return lastRate.toLocaleString("en-US");
+		return Math.ceil(lastRate).toLocaleString();
 	} else if (60 <= days && days <= 90) {
-		return d90.toLocaleString("en-US");
+		return Math.ceil(d90).toLocaleString();
 	} else if (21 <= days && days <= 60) {
-		return d60.toLocaleString("en-US");
+		return Math.ceil(d60).toLocaleString();
 	} else if (11 <= days && days <= 20) {
-		return d20.toLocaleString("en-US");
+		return Math.ceil(d20).toLocaleString();
 	} else if (1 <= days && days <= 10) {
-		return d10.toLocaleString("en-US");
+		return Math.ceil(d10).toLocaleString();
 	}
 }
 
 function printOut(newResult) {
-	result.textContent = `${newResult} VNĐ`;
+	result.classList.add("result");
+	result.removeAttribute("style");
+	result.textContent = `${newResult}`;
 }
+
+function error() {
+	result.classList.remove("result");
+	result.style.color = "red";
+	result.style.fontSize = "1rem";
+	result.textContent = `Vui lòng nhập số ngày bảo hiểm`;
+}
+
 function formatNo(element, newResult) {
 	if (element.value == "") return;
 	element.value = newResult;

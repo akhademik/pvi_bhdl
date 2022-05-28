@@ -1,27 +1,56 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&display=swap");
 * {
 	font-family: "Roboto", sans-serif;
+	--bg-main-clr: rgb(236, 231, 230);
+	--bg-accent-clr: rgb(250, 247, 245);
+	--text-clr: rgb(37, 37, 35);
+	/* outline: 1px dashed rgb(239, 86, 30); */
 }
 
 body {
-	background-image: url("topography.svg"), linear-gradient(110deg, #f93d66, #6d47d9);
-	background-size: 340px, auto;
-	min-height: calc(100vh - 100px);
-	margin: 0;
-	background-attachment: fixed;
 	display: grid;
 	place-items: center;
-	color: #fff;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: var(--bg-main-clr);
+	color: var(--text-clr);
+	min-height: 90vh;
 }
 
 .wrapper {
-	padding: 1rem;
 	margin: 0 auto;
-	border-radius: 1.2rem;
-	border: 4px solid #12bfea;
-	background-color: #160b2b;
-	max-width: 320px;
+	border-radius: 0.2rem;
+	border: 1px solid black;
+	background-color: var(--bg-accent-clr);
+	min-width: 341px;
 	text-align: center;
+	position: relative;
+}
+.wrapper::before,
+.wrapper::after {
+	border-radius: 0.2rem;
+	border: 1px solid black;
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.wrapper::before {
+	right: 0.4rem;
+	top: 0.4rem;
+	z-index: -2;
+}
+.wrapper::after {
+	right: 0.8rem;
+	top: 0.8rem;
+	z-index: -1;
+}
+
+.top_head {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 0.5rem 0;
 }
 
 #form {
@@ -36,18 +65,18 @@ body {
 }
 #form label {
 	text-align: left;
-	font-size: 1rem;
+	font-size: 0.7rem;
+	font-weight: bold;
 	padding-top: 0.8rem;
 }
 #form input {
-	background-color: #373a4d;
-	border: 1px solid rgb(108, 186, 204);
-	margin-top: 0.3rem;
+	background-color: transparent;
+	border-style: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 0.5rem;
-	height: 37px;
-	color: white;
-	font-size: 1.5rem;
-	border-radius: 0.5rem;
+	height: 16px;
+	color: inherit;
+	font-size: 1.2rem;
 }
 
 input::-webkit-outer-spin-button,
@@ -62,7 +91,7 @@ input[type="number"] {
 }
 
 button {
-	margin-top: 2rem;
+	margin: 2rem 0;
 	padding: 0.5rem 1rem;
 	width: -webkit-max-content;
 	width: -moz-max-content;
@@ -70,33 +99,22 @@ button {
 	-ms-flex-item-align: center;
 	align-self: center;
 	font-size: 1.4rem;
-	border-radius: 1.2rem;
-	border: 2px solid #12bfea;
-	background: linear-gradient(
-		129.2338804468deg,
-		rgb(243, 72, 104) 44.8942916723%,
-		rgb(242, 71, 104) 44.8942916723%,
-		rgb(158, 0, 236) 79.2512068181%
-	);
-	color: rgb(255, 255, 255);
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	color: inherit;
+	background: transparent;
+	transition: background 0.4s ease-in-out;
 }
 button:hover,
 button:focus {
 	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+	transform: scale(1.03);
+	background: var(--bg-main-clr);
 }
 
-.result {
+.result_cont {
 	width: 80%;
 	min-height: 100px;
-	background: linear-gradient(
-		129.2338804468deg,
-		rgb(243, 72, 104) 44.8942916723%,
-		rgb(242, 71, 104) 44.8942916723%,
-		rgb(158, 0, 236) 79.2512068181%
-	);
 	margin: 1.5rem auto;
-	border-radius: 1rem;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -107,7 +125,25 @@ button:focus {
 	-ms-flex-pack: center;
 	justify-content: center;
 	font-size: 2rem;
-	color: rgb(251, 251, 251);
 	font-weight: bold;
-	border: 2px solid #12bfea;
+}
+
+.result {
+	position: relative;
+}
+.result:before,
+.result:after {
+	position: absolute;
+	font-size: 0.8rem;
+	color: rgba(234, 117, 15, 0.947);
+}
+
+.result:before {
+	content: " VNĐ ";
+	left: -33px;
+}
+.result:after {
+	content: " /năm ";
+	top: 18px;
+	right: -37px;
 }
