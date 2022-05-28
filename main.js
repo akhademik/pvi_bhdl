@@ -5,21 +5,15 @@ const sum = document.querySelector(".sum");
 const days = document.querySelector(".days");
 const discount = document.querySelector(".discount");
 
-sum.addEventListener("focus", function () {
-	sum.value = "";
-	sum.type = "number";
-});
-
-sum.addEventListener("focusout", function () {
-	const newNum = parseInt(sum.value);
-	const formatNum = newNum.toLocaleString();
-	sum.type = "text";
-	formatNo(sum, formatNum);
+sum.addEventListener("input", () => {
+	onlyNumber(sum);
+	AddComma(sum);
 });
 
 discount.addEventListener("focus", function () {
 	discount.value = "";
 	discount.type = "number";
+	console.dir(discount);
 });
 
 discount.addEventListener("focusout", function () {
@@ -80,15 +74,15 @@ Tren 90: 0.005%
 		((0.005 * days90 * sum) / 100) * rateDis;
 
 	if (days > 90) {
-		return Math.ceil(lastRate).toLocaleString();
+		return Math.ceil(lastRate).toLocaleString("en-US");
 	} else if (60 <= days && days <= 90) {
-		return Math.ceil(d90).toLocaleString();
+		return Math.ceil(d90).toLocaleString("en-US");
 	} else if (21 <= days && days <= 60) {
-		return Math.ceil(d60).toLocaleString();
+		return Math.ceil(d60).toLocaleString("en-US");
 	} else if (11 <= days && days <= 20) {
-		return Math.ceil(d20).toLocaleString();
+		return Math.ceil(d20).toLocaleString("en-US");
 	} else if (1 <= days && days <= 10) {
-		return Math.ceil(d10).toLocaleString();
+		return Math.ceil(d10).toLocaleString("en-US");
 	}
 }
 
@@ -108,4 +102,14 @@ function error() {
 function formatNo(element, newResult) {
 	if (element.value == "") return;
 	element.value = newResult;
+}
+
+// force number input only for input
+function onlyNumber(element) {
+	element.value = element.value.replace(/(?![0-9])./gim, "");
+}
+
+// convert numbers to have seperator
+function AddComma(element) {
+	element.value = element.value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
